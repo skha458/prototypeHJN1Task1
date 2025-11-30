@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taniti: Your Island Paradise</title>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+        }
+
+        .app-container {
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 32px;
+        }
+
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 24px;
+            padding-bottom: 24px;
+        }
+
+        .logo-text {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        .menu-button {
+            display: flex;
+            align-items: center;
+            padding: 8px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu-button:hover {
+            background-color: #ededed;
+        }
+
+        .menu-icon {
+            font-size: 24px;
+            line-height: 1;
+            margin-left: 8px;
+        }
+
+        .hero-section {
+            margin-bottom: 48px;
+        }
+
+        .hero-box {
+            background-color: #ffffff;
+            border: 2px solid #333;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            aspect-ratio: 16 / 9;
+            min-height: 200px;
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .illustration-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, #f0f0f0 0%, #ffffff 40%);
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            color: #888;
+            padding: 16px;
+        }
+
+        .hero-text-overlay {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            display: flex;
+            align-items: flex-start;
+            padding: 48px;
+        }
+        
+        .hero-title {
+            font-size: 60px;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.05em;
+            color: #1a1a1a;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-wrapper {
+            margin-bottom: 64px;
+            text-align: center;
+        }
+
+        .cta-button {
+            background-color: #4a4a4a;
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+            padding: 12px 32px;
+            border-radius: 9999px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: #333333;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            transform: scale(1.01);
+        }
+
+        .main-section {
+            margin-bottom: 64px;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 32px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e0e0e0;
+            text-transform: uppercase;
+            letter-spacing: 0.025em;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .feature-card-style {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 24px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .feature-card-style:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 12px;
+        }
+
+        .card-text {
+            font-weight: 500;
+            font-size: 18px;
+        }
+        
+        .stay-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .plan-trip-tabs {
+            display: flex;
+            justify-content: flex-start;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .tab-button {
+            padding: 8px 16px;
+            border: 1px solid #999999;
+            background-color: #e0e0e0;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .tab-button.active {
+            background-color: #555555;
+            color: white;
+            border-color: #555555;
+        }
+        
+        .footer-nav {
+            padding-top: 48px;
+            padding-bottom: 16px;
+            border-top: 1px solid #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .social-icons-wrapper {
+            margin-bottom: 24px;
+        }
+        
+        .social-icon-link {
+            display: inline-block;
+            margin-right: 16px;
+            color: #4a4a4a;
+            text-decoration: none;
+            font-size: 24px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 24px;
+            font-size: 14px;
+        }
+        
+        .footer-link {
+            text-decoration: none;
+            color: #666666;
+            transition: color 0.2s;
+        }
+        
+        .footer-link:hover {
+            color: #333333;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+
+        <header class="main-header">
+            <div class="logo-text">Taniti Logo</div>
+            <button class="menu-button">
+                <span>MENU</span>
+                <span class="menu-icon">☰</span>
+            </button>
+        </header>
+
+        <div class="hero-section">
+            <div class="hero-box">
+                <div class="illustration-content">
+                    <svg viewBox="0 0 100 100" style="width: 100%; height: 100%; opacity: 0.6;" fill="none" stroke="#333" stroke-width="1.5">
+                        <path d="M 40 70 L 50 20 L 60 70 Z" stroke-linejoin="round"/>
+                        <path d="M 75 70 V 45 M 75 45 L 80 40 M 75 45 L 70 40 M 75 45 L 82 50" stroke-linecap="round"/>
+                        <path d="M 85 70 V 50 M 85 50 L 90 45 M 85 50 L 80 45 M 85 50 L 92 55" stroke-linecap="round"/>
+                        <path d="M 10 80 Q 30 75, 50 80 T 90 75"/>
+                    </svg>
+                </div>
+                <div class="hero-text-overlay">
+                    <h1 class="hero-title">
+                        DISCOVER<br>
+                        TANITI: Your Island<br>
+                        Paradise
+                    </h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-wrapper">
+            <button class="cta-button">
+                BOOK YOUR ADVENTURE NOW!
+            </button>
+        </div>
+
+        <section class="main-section">
+            <h2 class="section-title">WHY VISIT TANITI?</h2>
+            
+            <div class="feature-grid">
+                <div class="feature-card-style">
+                    <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="color: #666666;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18m-9-4v8m-9-6h2a2 2 0 012 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 012-2h2"></path></svg>
+                    <p class="card-text">Beaches & Water</p>
+                </div>
+
+                <div class="feature-card-style">
+                    <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="color: #666666;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.298.608 3.324 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    <p class="card-text">Rainforest & Volcano</p>
+                </div>
+
+                <div class="feature-card-style">
+                    <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="color: #666666;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <p class="card-text">Culture & Nightlife</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="main-section">
+            <h2 class="section-title">WHERE TO STAY</h2>
+            
+            <div class="stay-grid">
+                <div class="feature-card-style">
+                    <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="color: #666666;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-2a7 7 0 0114 0v2"></path></svg>
+                    <p class="card-text">Resort</p>
+                </div>
+
+                <div class="feature-card-style">
+                    <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="color: #666666;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0h6"></path></svg>
+                    <p class="card-text">B/B</p>
+                </div>
+
+                <div class="feature-card-style">
+                    <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="color: #666666;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    <p class="card-text">Hostel</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="main-section">
+            <h2 class="section-title">PLAN YOUR TRIP</h2>
+            
+            <div class="plan-trip-tabs">
+                <button class="tab-button active">Transporation</button>
+                <button class="tab-button">Essential Info</button>
+            </div>
+        </section>
+
+        <footer class="footer-nav">
+            <div class="social-icons-wrapper">
+                <a href="#" class="social-icon-link">F</a>
+                <a href="#" class="social-icon-link">T</a>
+                <a href="#" class="social-icon-link">I</a>
+            </div>
+            <nav class="footer-links">
+                <a href="#" class="footer-link">Social Icons</a>
+                <a href="#" class="footer-link">Contact</a>
+                <a href="#" class="footer-link">Privacy</a>
+                <a href="#" class="footer-link">Privacy</a>
+            </nav>
+        </footer>
+
+    </div>
+
+</body>
+</html>
